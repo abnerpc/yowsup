@@ -40,11 +40,11 @@ class BroadcastAudioDownloadableMediaMessage(AudioDownloadableMediaMessageProtoc
         return entity
 
     @staticmethod
-    def fromFilePath(fpath, url, ip, jids, mimeType = None, preview = None, filehash = None, filesize = None):
+    def fromFilePath(path, url, ip, jids, mimeType = None, preview = None, filehash = None, filesize = None):
         broadcastTime = int(time.time() * 1000)
         to = "%s@%s" % (broadcastTime,YowConstants.WHATSAPP_BROADCAST_SERVER)
         entity = AudioDownloadableMediaMessageProtocolEntity.fromFilePath(
-            fpath, url, ip, to, mimeType, preview, filehash, filesize)
+            path, url, ip, to, mimeType, preview, filehash, filesize)
         entity.__class__ = BroadcastAudioDownloadableMediaMessage
         entity.setBroadcastProps(jids)
         return entity
